@@ -7,10 +7,18 @@
     <title>Kontak - minCODE</title>
     <!-- Favicon & Meta Tags -->
     <link rel="icon" type="image/png" href="assets/logo.png">
+    <meta name="description" content="Hubungi tim minCODE untuk konsultasi gratis mengenai jasa joki tugas, pembuatan website, dan kebutuhan pengembangan IT lainnya.">
+    <meta name="keywords" content="kontak minCODE, hubungi developer, konsultasi website, konsultasi IT, WhatsApp developer, email minCODE">
+    <meta name="author" content="minCODE">
+    <meta name="robots" content="index, follow">
     <meta property="og:title" content="Kontak - minCODE">
     <meta property="og:description" content="Hubungi minCODE untuk konsultasi jasa joki tugas, pembuatan website, dan solusi IT Anda.">
     <meta property="og:image" content="assets/logo.png">
     <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Kontak - minCODE">
+    <meta name="twitter:description" content="Hubungi minCODE untuk konsultasi jasa joki tugas, pembuatan website, dan solusi IT Anda.">
+    <meta name="twitter:image" content="assets/logo.png">
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
@@ -156,17 +164,22 @@
                 minCODE
             </a>
             <nav class="hidden md:flex gap-lg items-center h-full">
-                <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors flex items-center h-full"
+                <a data-i18n="nav.home" class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors flex items-center h-full"
                     href="index.html">Home</a>
-                <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors flex items-center h-full"
+                <a data-i18n="nav.services" class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors flex items-center h-full"
                     href="layanan.html">Services</a>
-                <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors flex items-center h-full"
+                <a data-i18n="nav.portfolio" class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors flex items-center h-full"
                     href="portofolio.html">Portfolio</a>
-                <a class="font-body-md text-body-md text-primary border-b-2 border-primary h-full flex items-center"
+                <a data-i18n="nav.contact" class="font-body-md text-body-md text-primary border-b-2 border-primary h-full flex items-center"
                     href="kontak.html">Contact</a>
             </nav>
-            <div class="hidden md:block">
-                <a class="inline-flex items-center justify-center bg-primary-container text-on-primary-container font-label-caps text-label-caps rounded px-sm py-xs uppercase tracking-wider hover:bg-primary transition-colors"
+            <div class="hidden md:flex items-center gap-4">
+                <div class="flex items-center gap-2 border-r border-outline-variant pr-4">
+                    <button id="btn-lang-id" onclick="setLanguage('id')" class="font-code-sm text-code-sm text-primary font-bold hover:text-primary transition-colors">ID</button>
+                    <span class="text-outline-variant">|</span>
+                    <button id="btn-lang-en" onclick="setLanguage('en')" class="font-code-sm text-code-sm text-on-surface-variant hover:text-primary transition-colors">EN</button>
+                </div>
+                <a data-i18n="nav.cta" class="inline-flex items-center justify-center bg-primary-container text-on-primary-container font-label-caps text-label-caps rounded px-sm py-xs uppercase tracking-wider hover:bg-primary transition-colors"
                     href="kontak.html">
                     Get Started
                 </a>
@@ -178,11 +191,19 @@
         <!-- Mobile Dropdown Menu -->
         <div id="mobile-dropdown"
             class="hidden md:hidden border-b border-outline-variant bg-background px-margin-mobile py-4 flex flex-col gap-4">
-            <a class="text-on-surface-variant hover:text-primary" href="index.html">Home</a>
-            <a class="text-on-surface-variant hover:text-primary" href="layanan.html">Services</a>
-            <a class="text-on-surface-variant hover:text-primary" href="portofolio.html">Portfolio</a>
-            <a class="text-primary font-semibold" href="kontak.html">Contact</a>
-            <a class="bg-primary-container text-on-primary-container px-4 py-2 rounded text-center font-label-caps text-label-caps"
+            <a data-i18n="nav.home" class="text-on-surface-variant hover:text-primary" href="index.html">Home</a>
+            <a data-i18n="nav.services" class="text-on-surface-variant hover:text-primary" href="layanan.html">Services</a>
+            <a data-i18n="nav.portfolio" class="text-on-surface-variant hover:text-primary" href="portofolio.html">Portfolio</a>
+            <a data-i18n="nav.contact" class="text-primary font-semibold" href="kontak.html">Contact</a>
+            
+            <div class="flex items-center gap-2 py-2 border-y border-outline-variant/30">
+                <span class="text-sm text-on-surface-variant">Language:</span>
+                <button id="btn-lang-id-mob" onclick="setLanguage('id')" class="font-code-sm text-code-sm text-primary font-bold hover:text-primary transition-colors">ID</button>
+                <span class="text-outline-variant">|</span>
+                <button id="btn-lang-en-mob" onclick="setLanguage('en')" class="font-code-sm text-code-sm text-on-surface-variant hover:text-primary transition-colors">EN</button>
+            </div>
+
+            <a data-i18n="nav.cta" class="bg-primary-container text-on-primary-container px-4 py-2 rounded text-center font-label-caps text-label-caps"
                 href="kontak.html">Get Started</a>
         </div>
     </header>
@@ -199,9 +220,9 @@
             </div>
             <h1
                 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-xl md:text-headline-xl text-on-surface mb-sm">
-                Mulai <span class="text-primary-container">Proyek Anda</span>
+                <span data-i18n="kontak_page.title">Mulai</span> <span data-i18n="kontak_page.title_2" class="text-primary-container">Proyek Anda</span>
             </h1>
-            <p class="font-body-lg text-body-lg text-on-surface-variant">
+            <p data-i18n="kontak_page.desc" class="font-body-lg text-body-lg text-on-surface-variant">
                 Diskusikan kebutuhan teknis Anda dengan tim engineer kami. Kami siap membantu mewujudkan arsitektur
                 digital yang scalable dan high-performance.
             </p>
@@ -222,9 +243,9 @@
                     <span class="font-code-sm text-code-sm text-on-surface-variant ml-sm">connect_wa.sh</span>
                 </div>
                 <div class="flex-grow flex flex-col justify-center gap-md py-4">
-                    <h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary">Konsultasi
+                    <h2 data-i18n="kontak_page.wa_title" class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary">Konsultasi
                         Instan via WhatsApp</h2>
-                    <p class="font-body-md text-body-md text-on-surface-variant">
+                    <p data-i18n="kontak_page.wa_desc" class="font-body-md text-body-md text-on-surface-variant">
                         Klik tombol di bawah untuk langsung terhubung dengan tim developer minCODE di WhatsApp.
                         Diskusikan spesifikasi tugas, kebutuhan website, atau proyek aplikasi Anda secara gratis dan
                         dapatkan respon cepat!
@@ -232,14 +253,14 @@
                     <div
                         class="bg-surface-container-high rounded p-sm border border-outline-variant/30 font-code-sm text-code-sm text-tertiary-fixed-dim">
                         <p class="text-primary-container">// Status: </p>
-                        <p id="wa-status-text" class="text-secondary">&gt; Menunggu inisialisasi...</p>
+                        <p data-i18n="kontak_page.wa_status" id="wa-status-text" class="text-secondary">&gt; Menunggu inisialisasi...</p>
                     </div>
                 </div>
                 <div class="pt-sm">
                     <a id="wa-direct-btn"
                         class="w-full inline-flex items-center justify-center gap-xs bg-primary-container text-on-primary-container font-label-caps text-label-caps rounded px-md py-sm uppercase tracking-wider hover:bg-primary transition-all active:scale-95 text-center font-bold"
                         href="https://wa.me/6285147546072">
-                        <span>Hubungi via WhatsApp</span>
+                        <span data-i18n="kontak_page.wa_btn">Hubungi via WhatsApp</span>
                         <span class="material-symbols-outlined" style="font-size: 18px;">forum</span>
                     </a>
                 </div>
@@ -250,16 +271,16 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 gap-sm">
                     <!-- Email -->
                     <a class="contact-anim bg-surface/80 backdrop-blur-sm border border-outline-variant rounded-lg p-sm flex items-start gap-sm hover:border-primary-container transition-colors group"
-                        href="mailto:hello@mincode.dev">
+                        href="mohamimamin@gmail.com">
                         <div class="bg-surface-container-high p-xs rounded text-primary-container">
                             <span class="material-symbols-outlined">mail</span>
                         </div>
                         <div>
-                            <p class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-base">Direct
+                            <p data-i18n="kontak_page.email_title" class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-base">Direct
                                 Email</p>
                             <p
                                 class="font-code-sm text-code-sm text-on-surface group-hover:text-primary transition-colors">
-                                hello@mincode.dev</p>
+                                mohamimamin@gmail.com</p>
                         </div>
                     </a>
                     <!-- WhatsApp -->
@@ -269,7 +290,7 @@
                             <span class="material-symbols-outlined">forum</span>
                         </div>
                         <div>
-                            <p class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-base">
+                            <p data-i18n="kontak_page.wa_fast" class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-base">
                                 WhatsApp (Fast Response)</p>
                             <p
                                 class="font-code-sm text-code-sm text-on-surface group-hover:text-secondary transition-colors">
@@ -279,7 +300,7 @@
                     <!-- Socials (Inline) -->
                     <div
                         class="contact-anim bg-surface/80 backdrop-blur-sm border border-outline-variant rounded-lg p-sm flex flex-col gap-sm">
-                        <p class="font-label-caps text-label-caps text-on-surface-variant uppercase">Network</p>
+                        <p data-i18n="kontak_page.network" class="font-label-caps text-label-caps text-on-surface-variant uppercase">Network</p>
                         <div class="flex gap-sm">
                             <a class="flex items-center gap-xs font-code-sm text-code-sm text-on-surface hover:text-primary transition-colors"
                                 href="https://github.com/mohaminamin17-prog">
@@ -297,7 +318,7 @@
                 </div>
                 <!-- FAQ Section -->
                 <div class="mt-md">
-                    <h2
+                    <h2 data-i18n="kontak_page.faq_title"
                         class="contact-anim font-label-caps text-label-caps text-on-surface-variant uppercase mb-sm tracking-wider flex items-center gap-xs">
                         <span class="material-symbols-outlined" style="font-size: 16px;">help</span>
                         Frequently Asked Questions
@@ -306,9 +327,9 @@
                         <!-- FAQ Item 1 -->
                         <div
                             class="contact-anim bg-surface/80 backdrop-blur-sm border border-outline-variant rounded-lg p-sm">
-                            <p class="font-body-md text-body-md font-semibold text-on-surface mb-xs">Berapa lama
+                            <p data-i18n="kontak_page.faq1_q" class="font-body-md text-body-md font-semibold text-on-surface mb-xs">Berapa lama
                                 pengerjaan proyek?</p>
-                            <p class="font-body-md text-body-md text-on-surface-variant text-[14px]">
+                            <p data-i18n="kontak_page.faq1_a" class="font-body-md text-body-md text-on-surface-variant text-[14px]">
                                 Estimasi waktu bergantung pada kompleksitas scope. MVP standar biasanya memakan waktu
                                 4-6 minggu dengan metodologi sprint mingguan.
                             </p>
@@ -316,9 +337,9 @@
                         <!-- FAQ Item 2 -->
                         <div
                             class="contact-anim bg-surface/80 backdrop-blur-sm border border-outline-variant rounded-lg p-sm">
-                            <p class="font-body-md text-body-md font-semibold text-on-surface mb-xs">Apakah ada garansi
+                            <p data-i18n="kontak_page.faq2_q" class="font-body-md text-body-md font-semibold text-on-surface mb-xs">Apakah ada garansi
                                 revisi?</p>
-                            <p class="font-body-md text-body-md text-on-surface-variant text-[14px]">
+                            <p data-i18n="kontak_page.faq2_a" class="font-body-md text-body-md text-on-surface-variant text-[14px]">
                                 Ya, setiap kontrak mencakup periode UAT (User Acceptance Testing) dan garansi bug-fix
                                 selama 30 hari paska-deployment.
                             </p>
@@ -338,7 +359,7 @@
                     class="font-headline-lg text-headline-lg font-bold text-primary flex items-center gap-xs opacity-80">
                     <span class="material-symbols-outlined">terminal</span> minCODE
                 </div>
-                <p class="font-body-md text-body-md text-on-surface-variant text-[14px]">
+                <p data-i18n="footer.rights" class="font-body-md text-body-md text-on-surface-variant text-[14px]">
                     © 2024 minCODE. All rights reserved. Built for technical mastery.
                 </p>
             </div>
@@ -533,6 +554,6 @@
             animate();
         }
     </script>
+    <script src="assets/translations.js"></script>
 </body>
-
 </html>

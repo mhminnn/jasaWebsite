@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mhminnn.github.io/jasaWebsite/sitemap.xml
