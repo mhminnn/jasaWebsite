@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html class="dark" lang="id">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Layanan - minCODE</title>
+    
+    <!-- Favicon & Meta Tags -->
+    <link rel="icon" type="image/png" href="assets/logo.png">
+    <meta property="og:title" content="Layanan - minCODE">
+    <meta property="og:description" content="Layanan joki tugas, pembuatan website, aplikasi mobile, dan debugging error terpercaya.">
+    <meta property="og:image" content="assets/logo.png">
+    <meta property="og:type" content="website">
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Hanken+Grotesk:wght@600;700&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-high": "#222a3d",
+                      "surface-container-highest": "#2d3449",
+                      "on-secondary-fixed": "#00210c",
+                      "on-primary-container": "#005763",
+                      "on-tertiary-fixed": "#0d1c2d",
+                      "on-tertiary-container": "#415062",
+                      "on-secondary-fixed-variant": "#005227",
+                      "primary-container": "#22d3ee",
+                      "tertiary-fixed-dim": "#b9c8de",
+                      "inverse-on-surface": "#283044",
+                      "background": "#0b1326",
+                      "tertiary-container": "#b3c2d8",
+                      "surface-dim": "#0b1326",
+                      "surface-variant": "#2d3449",
+                      "on-primary": "#00363e",
+                      "error-container": "#93000a",
+                      "surface-container-low": "#131b2e",
+                      "on-tertiary-fixed-variant": "#39485a",
+                      "surface": "#0b1326",
+                      "primary-fixed-dim": "#2fd9f4",
+                      "error": "#ffb4ab",
+                      "surface-bright": "#31394d",
+                      "on-surface": "#dae2fd",
+                      "outline-variant": "#3c494c",
+                      "tertiary": "#cfdef4",
+                      "on-secondary-container": "#003e1c",
+                      "inverse-primary": "#006877",
+                      "on-error-container": "#ffdad6",
+                      "secondary": "#4de082",
+                      "on-surface-variant": "#bbc9cd",
+                      "on-tertiary": "#233143",
+                      "primary": "#8aebff",
+                      "outline": "#859397",
+                      "secondary-fixed": "#6dfe9c",
+                      "tertiary-fixed": "#d4e4fa",
+                      "on-secondary": "#003919",
+                      "secondary-container": "#00b55d",
+                      "primary-fixed": "#a2eeff",
+                      "surface-container-lowest": "#060e20",
+                      "surface-container": "#171f33",
+                      "on-primary-fixed": "#001f25",
+                      "on-primary-fixed-variant": "#004e5a",
+                      "on-background": "#dae2fd",
+                      "surface-tint": "#2fd9f4",
+                      "inverse-surface": "#dae2fd",
+                      "on-error": "#690005",
+                      "secondary-fixed-dim": "#4de082"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "margin-mobile": "16px",
+                      "md": "24px",
+                      "lg": "48px",
+                      "base": "4px",
+                      "xs": "8px",
+                      "margin-desktop": "64px",
+                      "xl": "80px",
+                      "sm": "16px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "label-caps": ["JetBrains Mono"],
+                      "body-md": ["Inter"],
+                      "headline-xl": ["Hanken Grotesk"],
+                      "body-lg": ["Inter"],
+                      "headline-lg-mobile": ["Hanken Grotesk"],
+                      "headline-lg": ["Hanken Grotesk"],
+                      "code-sm": ["JetBrains Mono"]
+              },
+              "fontSize": {
+                      "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                      "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                      "headline-xl": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                      "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                      "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                      "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                      "code-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+              }
+            },
+          },
+        }
+    </script>
+    <style>
+        .service-card:hover .service-icon {
+            color: #22d3ee;
+            transform: scale(1.1);
+            transition: all 0.3s ease;
+        }
+        .service-card {
+            transition: all 0.3s ease;
+        }
+        .service-card:hover {
+            box-shadow: 0 0 15px rgba(34, 211, 238, 0.1);
+            border-color: rgba(34, 211, 238, 0.3);
+        }
+        .hero-anim {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col relative selection:bg-primary-container selection:text-on-primary-container">
+    <div class="fixed inset-0 w-full h-full -z-20 pointer-events-none">
+        <canvas class="w-full h-full" id="hero-canvas"></canvas>
+    </div>
+    <div class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary-container/5 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+    
+    <!-- TopNavBar -->
+    <header class="bg-background/90 backdrop-blur-md border-b border-outline-variant dark:border-outline-variant sticky top-0 z-50 transition-colors">
+        <div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto h-20">
+            <a class="flex items-center gap-2" href="index.html">
+                <span class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg font-bold text-primary dark:text-primary tracking-tight">minCODE</span>
+            </a>
+            <nav class="hidden md:flex gap-md items-center">
+                <a class="font-body-md text-body-md text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary transition-colors hover:bg-surface-container-high dark:hover:bg-surface-container-high transition-all px-3 py-2 rounded-DEFAULT" href="index.html">Home</a>
+                <a class="font-body-md text-body-md text-primary dark:text-primary border-b-2 border-primary pb-1 px-3 hover:bg-surface-container-high dark:hover:bg-surface-container-high transition-all" href="layanan.html">Services</a>
+                <a class="font-body-md text-body-md text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary transition-colors hover:bg-surface-container-high dark:hover:bg-surface-container-high transition-all px-3 py-2 rounded-DEFAULT" href="portofolio.html">Portfolio</a>
+                <a class="font-body-md text-body-md text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary transition-colors hover:bg-surface-container-high dark:hover:bg-surface-container-high transition-all px-3 py-2 rounded-DEFAULT" href="kontak.html">Contact</a>
+            </nav>
+            <a class="hidden md:inline-flex bg-primary-container text-on-primary-container font-label-caps text-label-caps px-4 py-2 rounded-DEFAULT font-semibold hover:brightness-110 active:scale-95 transition-all" href="kontak.html">
+                Get Started
+            </a>
+            <button id="mobile-menu-toggle" class="md:hidden text-primary">
+                <span class="material-symbols-outlined text-3xl">menu</span>
+            </button>
+        </div>
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobile-dropdown" class="hidden md:hidden border-b border-outline-variant bg-background px-margin-mobile py-4 flex flex-col gap-4">
+            <a class="text-on-surface-variant hover:text-primary" href="index.html">Home</a>
+            <a class="text-primary font-semibold" href="layanan.html">Services</a>
+            <a class="text-on-surface-variant hover:text-primary" href="portofolio.html">Portfolio</a>
+            <a class="text-on-surface-variant hover:text-primary" href="kontak.html">Contact</a>
+            <a class="bg-primary-container text-on-primary-container px-4 py-2 rounded text-center font-label-caps text-label-caps" href="kontak.html">Get Started</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow flex flex-col py-lg md:py-xl px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto w-full gap-xl relative z-10">
+        <!-- Header Section -->
+        <section class="flex flex-col gap-sm text-center md:text-left max-w-3xl">
+            <h1 class="hero-anim font-headline-xl text-headline-lg-mobile md:text-headline-xl text-primary">Layanan Kami</h1>
+            <p class="hero-anim font-body-lg text-body-lg text-on-surface-variant">Solusi teknikal premium untuk kebutuhan pengembangan digital Anda. Dari pembuatan website hingga debugging kode yang kompleks, kami siap membantu.</p>
+        </section>
+        
+        <!-- Services Grid -->
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-md md:gap-lg">
+            <!-- Service 1 -->
+            <div class="hero-anim service-card bg-surface-container-highest border border-outline-variant rounded-lg p-md flex flex-col gap-sm relative overflow-hidden group">
+                <div class="absolute top-0 left-0 w-full h-1 bg-primary"></div>
+                <div class="flex justify-between items-start">
+                    <span class="material-symbols-outlined text-4xl text-on-surface-variant service-icon transition-colors">web</span>
+                    <span class="font-label-caps text-label-caps bg-secondary/10 text-secondary px-2 py-1 rounded-DEFAULT">Frontend &amp; Backend</span>
+                </div>
+                <h3 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mt-sm">Jasa Pembuatan Website</h3>
+                <p class="font-body-md text-body-md text-on-surface-variant flex-grow">
+                    Pengembangan website profesional yang responsif dan berkinerja tinggi. Kami melayani pembuatan Landing Page, Company Profile, hingga platform E-commerce yang kompleks.
+                </p>
+                <div class="bg-surface-container-low rounded-DEFAULT p-3 mt-xs border border-outline-variant/50">
+                    <p class="font-code-sm text-code-sm text-tertiary-fixed-dim"><span class="text-primary">&gt;</span> Tech Stack: React, Next.js, Laravel, Node.js</p>
+                </div>
+                <a href="kontak.html?layanan=website" class="mt-sm bg-transparent border border-secondary text-secondary font-body-md text-body-md px-4 py-2 rounded-DEFAULT hover:bg-secondary/10 transition-colors w-full sm:w-auto self-start text-center">
+                    Pesan Jasa
+                </a>
+            </div>
+            <!-- Service 2 -->
+            <div class="hero-anim service-card bg-surface-container-highest border border-outline-variant rounded-lg p-md flex flex-col gap-sm relative overflow-hidden group">
+                <div class="flex justify-between items-start">
+                    <span class="material-symbols-outlined text-4xl text-on-surface-variant service-icon transition-colors">terminal</span>
+                    <span class="font-label-caps text-label-caps bg-secondary/10 text-secondary px-2 py-1 rounded-DEFAULT">Tugas Akademik</span>
+                </div>
+                <h3 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mt-sm">Joki Tugas Web &amp; Aplikasi</h3>
+                <p class="font-body-md text-body-md text-on-surface-variant flex-grow">
+                    Bantuan penyelesaian tugas pemrograman dengan penulisan kode yang bersih dan mudah dipahami. Meliputi HTML, CSS, JavaScript, PHP, dan berbagai framework modern.
+                </p>
+                <div class="bg-surface-container-low rounded-DEFAULT p-3 mt-xs border border-outline-variant/50">
+                    <p class="font-code-sm text-code-sm text-tertiary-fixed-dim"><span class="text-primary">&gt;</span> Hasil: Source code rapi &amp; laporan dokumentasi</p>
+                </div>
+                <a href="kontak.html?layanan=tugas" class="mt-sm bg-transparent border border-secondary text-secondary font-body-md text-body-md px-4 py-2 rounded-DEFAULT hover:bg-secondary/10 transition-colors w-full sm:w-auto self-start text-center">
+                    Pesan Jasa
+                </a>
+            </div>
+            <!-- Service 3 -->
+            <div class="hero-anim service-card bg-surface-container-highest border border-outline-variant rounded-lg p-md flex flex-col gap-sm relative overflow-hidden group">
+                <div class="flex justify-between items-start">
+                    <span class="material-symbols-outlined text-4xl text-on-surface-variant service-icon transition-colors">school</span>
+                    <span class="font-label-caps text-label-caps bg-secondary/10 text-secondary px-2 py-1 rounded-DEFAULT">Projek Akhir</span>
+                </div>
+                <h3 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mt-sm">Joki Projek Kuliah Web &amp; Mobile</h3>
+                <p class="font-body-md text-body-md text-on-surface-variant flex-grow">
+                    Layanan pengerjaan Skripsi, Tugas Akhir, atau Proyek Semester. Kami menjamin orisinalitas kode, arsitektur yang solid, dan siap membantu hingga revisi selesai.
+                </p>
+                <div class="bg-surface-container-low rounded-DEFAULT p-3 mt-xs border border-outline-variant/50 relative">
+                    <div class="absolute top-2 right-2 flex gap-1">
+                        <div class="w-2 h-2 rounded-full bg-outline-variant"></div>
+                        <div class="w-2 h-2 rounded-full bg-outline-variant"></div>
+                        <div class="w-2 h-2 rounded-full bg-outline-variant"></div>
+                    </div>
+                    <p class="font-code-sm text-code-sm text-tertiary-fixed-dim mt-2"><span class="text-primary">$</span> npm run deploy_skripsi</p>
+                </div>
+                <a href="kontak.html?layanan=projek" class="mt-sm bg-transparent border border-secondary text-secondary font-body-md text-body-md px-4 py-2 rounded-DEFAULT hover:bg-secondary/10 transition-colors w-full sm:w-auto self-start text-center">
+                    Pesan Jasa
+                </a>
+            </div>
+            <!-- Service 4 -->
+            <div class="hero-anim service-card bg-surface-container-highest border border-outline-variant rounded-lg p-md flex flex-col gap-sm relative overflow-hidden group">
+                <div class="absolute top-0 left-0 w-full h-1 bg-primary"></div>
+                <div class="flex justify-between items-start">
+                    <span class="material-symbols-outlined text-4xl text-on-surface-variant service-icon transition-colors">bug_report</span>
+                    <span class="font-label-caps text-label-caps bg-secondary/10 text-secondary px-2 py-1 rounded-DEFAULT">Maintenance</span>
+                </div>
+                <h3 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mt-sm">Jasa Coding, Revisi &amp; Debugging</h3>
+                <p class="font-body-md text-body-md text-on-surface-variant flex-grow">
+                    Bantuan teknis untuk perbaikan bug (debugging), optimasi kode (refactoring), hingga penambahan fitur baru pada sistem yang sudah berjalan.
+                </p>
+                <div class="bg-surface-container-low rounded-DEFAULT p-3 mt-xs border border-outline-variant/50">
+                    <p class="font-code-sm text-code-sm text-tertiary-fixed-dim"><span class="text-primary">&gt;</span> Status: 0 errors, 0 warnings. Code optimized.</p>
+                </div>
+                <a href="kontak.html?layanan=debugging" class="mt-sm bg-transparent border border-secondary text-secondary font-body-md text-body-md px-4 py-2 rounded-DEFAULT hover:bg-secondary/10 transition-colors w-full sm:w-auto self-start text-center">
+                    Pesan Jasa
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-surface-container-lowest/80 backdrop-blur-sm dark:bg-surface-container-lowest/80 border-t border-outline-variant dark:border-outline-variant w-full mt-auto relative z-10">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-md w-full px-margin-mobile md:px-margin-desktop py-lg max-w-7xl mx-auto">
+            <div class="flex flex-col gap-sm">
+                <span class="font-headline-lg text-headline-lg-mobile md:text-headline-lg font-bold text-primary dark:text-primary">minCODE</span>
+                <p class="font-body-md text-body-md text-secondary dark:text-secondary opacity-80">© 2024 minCODE. All rights reserved. Built for technical mastery.</p>
+            </div>
+            <div class="flex flex-wrap gap-sm md:justify-end items-start">
+                <a class="font-body-md text-body-md text-on-surface-variant dark:text-on-surface-variant hover:text-secondary dark:hover:text-secondary hover:underline transition-all" href="layanan.html">Services</a>
+                <a class="font-body-md text-body-md text-on-surface-variant dark:text-on-surface-variant hover:text-secondary dark:hover:text-secondary hover:underline transition-all" href="portofolio.html">Portfolio</a>
+                <a class="font-body-md text-body-md text-on-surface-variant dark:text-on-surface-variant hover:text-secondary dark:hover:text-secondary hover:underline transition-all" href="#">Privacy Policy</a>
+                <a class="font-body-md text-body-md text-on-surface-variant dark:text-on-surface-variant hover:text-secondary dark:hover:text-secondary hover:underline transition-all" href="#">Terms of Service</a>
+                <a class="font-body-md text-body-md text-on-surface-variant dark:text-on-surface-variant hover:text-secondary dark:hover:text-secondary hover:underline transition-all" href="kontak.html">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle logic
+        const menuToggle = document.getElementById('mobile-menu-toggle');
+        const dropdown = document.getElementById('mobile-dropdown');
+        if (menuToggle && dropdown) {
+            menuToggle.addEventListener('click', () => {
+                dropdown.classList.toggle('hidden');
+            });
+        }
+
+        // GSAP Animations
+        document.addEventListener("DOMContentLoaded", (event) => {
+            gsap.to(".hero-anim", {
+                autoAlpha: 1,
+                y: 0,
+                duration: 0.8,
+                stagger: 0.1,
+                ease: "power3.out",
+                delay: 0.1
+            });
+        });
+
+        // Three.js Interactive Background
+        const canvas = document.getElementById('hero-canvas');
+        if (canvas) {
+            const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+            
+            const container = canvas.parentElement;
+            renderer.setSize(container.clientWidth, container.clientHeight);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
+            camera.position.z = 150;
+
+            const particleCount = 250;
+            const particles = new THREE.BufferGeometry();
+            const particlePositions = new Float32Array(particleCount * 3);
+            const particleVelocities = [];
+
+            for (let i = 0; i < particleCount; i++) {
+                particlePositions[i * 3] = (Math.random() - 0.5) * 400;
+                particlePositions[i * 3 + 1] = (Math.random() - 0.5) * 400;
+                particlePositions[i * 3 + 2] = (Math.random() - 0.5) * 400;
+                
+                particleVelocities.push({
+                    x: (Math.random() - 0.5) * 0.5,
+                    y: (Math.random() - 0.5) * 0.5,
+                    z: (Math.random() - 0.5) * 0.5
+                });
+            }
+
+            particles.setAttribute('position', new THREE.BufferAttribute(particlePositions, 3));
+
+            const particleMaterial = new THREE.PointsMaterial({
+                color: 0x22d3ee,
+                size: 2,
+                transparent: true,
+                opacity: 0.8
+            });
+
+            const particleSystem = new THREE.Points(particles, particleMaterial);
+            scene.add(particleSystem);
+
+            const lineMaterial = new THREE.LineBasicMaterial({
+                color: 0x22d3ee,
+                transparent: true,
+                opacity: 0.15
+            });
+
+            const linesGeometry = new THREE.BufferGeometry();
+            const lineSystem = new THREE.LineSegments(linesGeometry, lineMaterial);
+            scene.add(lineSystem);
+
+            let mouseX = 0;
+            let mouseY = 0;
+            let targetX = 0;
+            let targetY = 0;
+            let windowHalfX = window.innerWidth / 2;
+            let windowHalfY = window.innerHeight / 2;
+
+            document.addEventListener('mousemove', (event) => {
+                mouseX = (event.clientX - windowHalfX) * 0.05;
+                mouseY = (event.clientY - windowHalfY) * 0.05;
+            });
+
+            window.addEventListener('resize', () => {
+                windowHalfX = window.innerWidth / 2;
+                windowHalfY = window.innerHeight / 2;
+                camera.aspect = container.clientWidth / container.clientHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(container.clientWidth, container.clientHeight);
+            });
+
+            function animate() {
+                requestAnimationFrame(animate);
+                
+                targetX = mouseX * 0.5;
+                targetY = mouseY * 0.5;
+                
+                camera.position.x += (targetX - camera.position.x) * 0.02;
+                camera.position.y += (-targetY - camera.position.y) * 0.02;
+                camera.lookAt(scene.position);
+                
+                const positions = particleSystem.geometry.attributes.position.array;
+                
+                for (let i = 0; i < particleCount; i++) {
+                    positions[i * 3] += particleVelocities[i].x;
+                    positions[i * 3 + 1] += particleVelocities[i].y;
+                    positions[i * 3 + 2] += particleVelocities[i].z;
+                    
+                    if (Math.abs(positions[i * 3]) > 200) particleVelocities[i].x *= -1;
+                    if (Math.abs(positions[i * 3 + 1]) > 200) particleVelocities[i].y *= -1;
+                    if (Math.abs(positions[i * 3 + 2]) > 200) particleVelocities[i].z *= -1;
+                }
+                particleSystem.geometry.attributes.position.needsUpdate = true;
+                
+                // Connect particles
+                const linePositions = [];
+                for (let i = 0; i < particleCount; i++) {
+                    for (let j = i + 1; j < particleCount; j++) {
+                        const dx = positions[i * 3] - positions[j * 3];
+                        const dy = positions[i * 3 + 1] - positions[j * 3 + 1];
+                        const dz = positions[i * 3 + 2] - positions[j * 3 + 2];
+                        const dist = Math.sqrt(dx * dx + dy * dy + dz * dz);
+                        
+                        if (dist < 40) {
+                            linePositions.push(
+                                positions[i * 3], positions[i * 3 + 1], positions[i * 3 + 2],
+                                positions[j * 3], positions[j * 3 + 1], positions[j * 3 + 2]
+                            );
+                        }
+                    }
+                }
+                
+                linesGeometry.setAttribute('position', new THREE.Float32BufferAttribute(linePositions, 3));
+                
+                renderer.render(scene, camera);
+            }
+
+            animate();
+        }
+    </script>
+</body>
+</html>

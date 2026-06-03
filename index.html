@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html class="dark" lang="id">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>minCODE - Solusi Coding &amp; Development Terpercaya</title>
+    
+    <!-- Favicon & Meta Tags -->
+    <link rel="icon" type="image/png" href="assets/logo.png">
+    <meta property="og:title" content="minCODE - Jasa Joki & Pembuatan Website">
+    <meta property="og:description" content="Solusi coding, pembuatan website, joki tugas, dan projek akhir IT terbaik.">
+    <meta property="og:image" content="assets/logo.png">
+    <meta property="og:type" content="website">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@600;700&amp;family=Inter:wght@400&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-high": "#222a3d",
+                        "surface-container-highest": "#2d3449",
+                        "on-secondary-fixed": "#00210c",
+                        "on-primary-container": "#005763",
+                        "on-tertiary-fixed": "#0d1c2d",
+                        "on-tertiary-container": "#415062",
+                        "on-secondary-fixed-variant": "#005227",
+                        "primary-container": "#22d3ee",
+                        "tertiary-fixed-dim": "#b9c8de",
+                        "inverse-on-surface": "#283044",
+                        "background": "#0b1326",
+                        "tertiary-container": "#b3c2d8",
+                        "surface-dim": "#0b1326",
+                        "surface-variant": "#2d3449",
+                        "on-primary": "#00363e",
+                        "error-container": "#93000a",
+                        "surface-container-low": "#131b2e",
+                        "on-tertiary-fixed-variant": "#39485a",
+                        "surface": "#0b1326",
+                        "primary-fixed-dim": "#2fd9f4",
+                        "error": "#ffb4ab",
+                        "surface-bright": "#31394d",
+                        "on-surface": "#dae2fd",
+                        "outline-variant": "#3c494c",
+                        "tertiary": "#cfdef4",
+                        "on-secondary-container": "#003e1c",
+                        "inverse-primary": "#006877",
+                        "on-error-container": "#ffdad6",
+                        "secondary": "#4de082",
+                        "on-surface-variant": "#bbc9cd",
+                        "on-tertiary": "#233143",
+                        "primary": "#8aebff",
+                        "outline": "#859397",
+                        "secondary-fixed": "#6dfe9c",
+                        "tertiary-fixed": "#d4e4fa",
+                        "on-secondary": "#003919",
+                        "secondary-container": "#00b55d",
+                        "primary-fixed": "#a2eeff",
+                        "surface-container-lowest": "#060e20",
+                        "surface-container": "#171f33",
+                        "on-primary-fixed": "#001f25",
+                        "on-primary-fixed-variant": "#004e5a",
+                        "on-background": "#dae2fd",
+                        "surface-tint": "#2fd9f4",
+                        "inverse-surface": "#dae2fd",
+                        "on-error": "#690005",
+                        "secondary-fixed-dim": "#4de082"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "md": "24px",
+                        "lg": "48px",
+                        "base": "4px",
+                        "xs": "8px",
+                        "margin-desktop": "64px",
+                        "xl": "80px",
+                        "sm": "16px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["JetBrains Mono"],
+                        "body-md": ["Inter"],
+                        "headline-xl": ["Hanken Grotesk"],
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "code-sm": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-xl": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "code-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #0b1326; color: #dae2fd; }
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.4);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(51, 65, 85, 0.5);
+        }
+        .code-window {
+            background: #0F172A;
+            border: 1px solid #334155;
+            border-radius: 0.25rem;
+        }
+        .window-controls {
+            display: flex;
+            gap: 6px;
+            padding: 8px 12px;
+            border-bottom: 1px solid #334155;
+            background: #1E293B;
+        }
+        .window-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+        .dot-red { background-color: #EF4444; }
+        .dot-yellow { background-color: #F59E0B; }
+        .dot-green { background-color: #10B981; }
+        
+        .hero-anim {
+            opacity: 0;
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md antialiased overflow-x-hidden selection:bg-primary-container selection:text-on-primary-container">
+    <!-- TopNavBar -->
+    <nav class="bg-background dark:bg-background font-body-md text-body-md docked full-width top-0 border-b border-outline-variant dark:border-outline-variant flat no shadows sticky z-50">
+        <div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto h-20">
+            <!-- Brand Logo -->
+            <a class="flex items-center gap-2" href="index.html">
+                <span class="font-headline-lg text-headline-lg font-bold text-primary dark:text-primary tracking-tight">minCODE</span>
+            </a>
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex items-center gap-md">
+                <a class="text-primary dark:text-primary border-b-2 border-primary pb-1 hover:bg-surface-container-high dark:hover:bg-surface-container-high transition-all active:scale-95 duration-150" href="index.html">Home</a>
+                <a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary transition-colors hover:bg-surface-container-high dark:hover:bg-surface-container-high active:scale-95 duration-150 py-1" href="layanan.html">Services</a>
+                <a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary transition-colors hover:bg-surface-container-high dark:hover:bg-surface-container-high active:scale-95 duration-150 py-1" href="portofolio.html">Portfolio</a>
+                <a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary transition-colors hover:bg-surface-container-high dark:hover:bg-surface-container-high active:scale-95 duration-150 py-1" href="kontak.html">Contact</a>
+            </div>
+            <!-- CTA -->
+            <div class="hidden md:block">
+                <a class="bg-primary-container text-on-primary-container px-4 py-2 rounded font-label-caps text-label-caps hover:brightness-110 transition-all active:scale-95" href="kontak.html">Get Started</a>
+            </div>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-toggle" class="md:hidden text-on-surface p-2 rounded hover:bg-surface-container-high transition-colors">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
+        </div>
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobile-dropdown" class="hidden md:hidden border-b border-outline-variant bg-background px-margin-mobile py-4 flex flex-col gap-4">
+            <a class="text-primary font-semibold" href="index.html">Home</a>
+            <a class="text-on-surface-variant hover:text-primary" href="layanan.html">Services</a>
+            <a class="text-on-surface-variant hover:text-primary" href="portofolio.html">Portfolio</a>
+            <a class="text-on-surface-variant hover:text-primary" href="kontak.html">Contact</a>
+            <a class="bg-primary-container text-on-primary-container px-4 py-2 rounded text-center font-label-caps text-label-caps" href="kontak.html">Get Started</a>
+        </div>
+    </nav>
+    <main>
+        <!-- Hero Section -->
+        <section class="relative pt-xl pb-lg px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto overflow-hidden">
+            <canvas class="absolute inset-0 w-full h-full -z-20 pointer-events-none" id="hero-canvas"></canvas>
+            <!-- Background Decoration -->
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary-container/5 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-lg items-center">
+                <div class="space-y-6 z-10">
+                    <div class="hero-anim inline-flex items-center gap-2 bg-secondary/10 border border-secondary/20 px-3 py-1.5 rounded-sm">
+                        <span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+                        <span class="font-label-caps text-label-caps text-secondary">DEVELOPMENT AGENCY</span>
+                    </div>
+                    <h1 class="hero-anim font-headline-lg-mobile text-headline-lg-mobile md:font-headline-xl md:text-headline-xl text-on-surface">
+                                            Solusi Coding &amp; <br class="hidden md:block"/>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-container to-primary">Development Terpercaya</span>
+                    </h1>
+                    <p class="hero-anim font-body-lg text-body-lg text-on-surface-variant max-w-xl">
+                                            Dari tugas kuliah hingga proyek profesional, minCODE siap membantu Anda membangun website dan aplikasi impian dengan standar industri terkini.
+                                        </p>
+                    <div class="hero-anim pt-4 flex flex-wrap gap-4">
+                        <a class="bg-primary-container text-on-primary-container px-6 py-3 rounded hover:brightness-110 transition-all font-label-caps text-label-caps active:scale-95 flex items-center gap-2" href="kontak.html">
+                                                    Konsultasi Sekarang
+                                                    <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                        </a>
+                        <a class="bg-transparent border border-outline-variant text-on-surface px-6 py-3 rounded hover:bg-surface-container-high transition-all font-label-caps text-label-caps active:scale-95" href="portofolio.html">
+                                                    Lihat Portofolio
+                                                </a>
+                    </div>
+                </div>
+                <!-- Hero Graphic (Code Window) -->
+                <div class="hero-anim z-10 relative mt-8 lg:mt-0">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-primary-container/30 to-secondary/30 blur-lg opacity-50"></div>
+                    <div class="code-window relative overflow-hidden">
+                        <div class="window-controls">
+                            <div class="window-dot dot-red"></div>
+                            <div class="window-dot dot-yellow"></div>
+                            <div class="window-dot dot-green"></div>
+                            <div class="ml-4 font-code-sm text-code-sm text-on-surface-variant/50 text-[10px]">app.js - minCODE</div>
+                        </div>
+                        <div class="p-6 font-code-sm text-code-sm text-on-surface overflow-x-auto">
+                            <pre class="text-left"><code><span class="text-secondary">const minCode = {</span>
+  <span class="text-primary-container">services: [</span>
+    <span class="text-[#facc15]">'Web Development',</span>
+    <span class="text-[#facc15]">'Mobile Apps',</span>
+    <span class="text-[#facc15]">'UI/UX Design'</span>
+  <span class="text-primary-container">],</span>
+  <span class="text-primary-container">quality:</span> <span class="text-[#a78bfa]">true,</span>
+  <span class="text-primary-container">delivery:</span> <span class="text-[#facc15]">'Fast &amp; Reliable',</span>
+  
+  <span class="text-[#60a5fa]">initProject:</span> <span class="text-secondary">async (client) => {</span>
+    <span class="text-secondary">await this.analyzeRequirements(client);</span>
+    <span class="text-secondary">return this.buildAwesomeProduct();</span>
+  <span class="text-secondary">}</span>
+<span class="text-secondary">};</span></code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Benefits Section -->
+        <section class="py-xl bg-surface-container-lowest border-y border-outline-variant/30">
+            <div class="max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop">
+                <div class="text-center mb-lg">
+                    <h2 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-on-surface mb-4">Mengapa Memilih Kami?</h2>
+                    <p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto">Kami mengutamakan kualitas, kecepatan, dan efisiensi dalam setiap baris kode yang kami tulis.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Benefit 1 -->
+                    <div class="bg-surface-container-high border border-outline-variant rounded p-6 hover:border-primary-container/50 transition-colors group">
+                        <div class="w-12 h-12 bg-surface-container-highest rounded flex items-center justify-center mb-4 group-hover:bg-primary-container/10 transition-colors">
+                            <span class="material-symbols-outlined text-primary-container text-2xl" data-weight="fill" style="font-variation-settings: 'FILL' 1;">speed</span>
+                        </div>
+                        <h3 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface text-xl mb-2">Kecepatan</h3>
+                        <p class="font-body-md text-body-md text-on-surface-variant">Proses pengerjaan yang efisien tanpa mengorbankan kualitas, memastikan proyek Anda selesai tepat waktu.</p>
+                    </div>
+                    <!-- Benefit 2 -->
+                    <div class="bg-surface-container-high border border-outline-variant rounded p-6 hover:border-secondary/50 transition-colors group">
+                        <div class="w-12 h-12 bg-surface-container-highest rounded flex items-center justify-center mb-4 group-hover:bg-secondary/10 transition-colors">
+                            <span class="material-symbols-outlined text-secondary text-2xl" data-weight="fill" style="font-variation-settings: 'FILL' 1;">code_blocks</span>
+                        </div>
+                        <h3 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface text-xl mb-2">Kode Bersih</h3>
+                        <p class="font-body-md text-body-md text-on-surface-variant">Struktur kode yang rapi, terukur, dan mudah di-maintain sesuai dengan best practices industri terkini.</p>
+                    </div>
+                    <!-- Benefit 3 -->
+                    <div class="bg-surface-container-high border border-outline-variant rounded p-6 hover:border-primary-container/50 transition-colors group">
+                        <div class="w-12 h-12 bg-surface-container-highest rounded flex items-center justify-center mb-4 group-hover:bg-primary-container/10 transition-colors">
+                            <span class="material-symbols-outlined text-primary-container text-2xl" data-weight="fill" style="font-variation-settings: 'FILL' 1;">savings</span>
+                        </div>
+                        <h3 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface text-xl mb-2">Harga Terjangkau</h3>
+                        <p class="font-body-md text-body-md text-on-surface-variant">Solusi premium dengan harga yang rasional. Berbagai paket tersedia menyesuaikan skala kebutuhan Anda.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Services Summary (Bento Grid) -->
+        <section class="py-xl px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-lg gap-4">
+                <div>
+                    <h2 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-on-surface mb-2">Layanan Utama</h2>
+                    <p class="font-body-md text-body-md text-on-surface-variant">Ekspertis teknis untuk berbagai platform.</p>
+                </div>
+                <a class="text-primary-container font-label-caps text-label-caps hover:underline flex items-center gap-1" href="layanan.html">
+                                    Lihat Semua Layanan <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                </a>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-[200px]">
+                <!-- Service 1: Large Span -->
+                <div class="md:col-span-2 md:row-span-2 bg-surface border border-outline-variant rounded overflow-hidden relative group border-t-4 border-t-primary-container flex flex-col justify-end p-6">
+                    <div class="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent z-10"></div>
+                    <img alt="Pembuatan Website" class="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:opacity-40 transition-opacity duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCV0xz77qMn0ZzyAdXDnS8vfLZtAUPAKl1I0fR-95VG8Cdgb5rjV4OijpDSfh7YzXqBvag2DRNVEPuCmg9hbA9_Em0S5j9QDt6NZQXxG_H2kY0yLUW3QuwlTeIN64xu5KiuFKDT9s3yMHyPDDiRnTX1FHJZzF8a0KEXmIWXe8hSqUI2KQcU4UnDC1eS5CQPPVGFnEunvFlX45dJmexmsAasvELMMstPj-ORrOQZrOX4rmoB0o9MNx6rHmpbjsxDWT0Ul0wK70ceBas"/>
+                    <div class="relative z-20">
+                        <span class="inline-block bg-secondary/10 text-secondary font-code-sm text-code-sm px-2 py-1 rounded mb-3">Company Profile / E-commerce / Web App</span>
+                        <h3 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-2">Jasa Pembuatan Website</h3>
+                        <p class="font-body-md text-body-md text-on-surface-variant max-w-md">Membangun website modern, interaktif, dan responsif sesuai dengan kebutuhan bisnis atau pribadi Anda.</p>
+                    </div>
+                    <div class="absolute top-6 right-6 z-20 w-12 h-12 bg-surface-container-high rounded flex items-center justify-center border border-outline-variant/50">
+                        <span class="material-symbols-outlined text-primary-container">language</span>
+                    </div>
+                </div>
+                <!-- Service 2 -->
+                <div class="md:col-span-2 bg-surface-container-high border border-outline-variant rounded p-6 flex flex-col justify-between hover:bg-surface-container-highest transition-colors">
+                    <div class="flex justify-between items-start">
+                        <span class="inline-block bg-primary-container/10 text-primary-container font-code-sm text-code-sm px-2 py-1 rounded">Sekolah / Kuliah</span>
+                        <span class="material-symbols-outlined text-on-surface-variant">assignment</span>
+                    </div>
+                    <div>
+                        <h3 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface text-lg mb-1">Joki Tugas Website &amp; Aplikasi</h3>
+                        <p class="font-body-md text-body-md text-on-surface-variant text-sm">Membantu menyelesaikan tugas-tugas coding dan perancangan aplikasi tepat waktu dengan hasil terbaik.</p>
+                    </div>
+                </div>
+                <!-- Service 3 -->
+                <div class="bg-surface-container-high border border-outline-variant rounded p-6 flex flex-col justify-between hover:bg-surface-container-highest transition-colors">
+                    <div class="flex justify-between items-start">
+                        <span class="inline-block bg-tertiary/10 text-tertiary font-code-sm text-code-sm px-2 py-1 rounded">Tugas Akhir / Skripsi</span>
+                        <span class="material-symbols-outlined text-on-surface-variant">school</span>
+                    </div>
+                    <div>
+                        <h3 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface text-lg mb-1">Projek Kuliah Web &amp; Mobile</h3>
+                        <p class="font-body-md text-body-md text-on-surface-variant text-sm">Pembuatan dan bimbingan projek kuliah untuk web dan aplikasi mobile.</p>
+                    </div>
+                </div>
+                <!-- Service 4 -->
+                <div class="bg-surface-container-high border border-outline-variant rounded p-6 flex flex-col justify-between hover:bg-surface-container-highest transition-colors">
+                    <div class="flex justify-between items-start">
+                        <span class="inline-block bg-error/10 text-error font-code-sm text-code-sm px-2 py-1 rounded">Bug Fixing / Optimasi</span>
+                        <span class="material-symbols-outlined text-on-surface-variant">bug_report</span>
+                    </div>
+                    <div>
+                        <h3 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface text-lg mb-1">Coding, Revisi &amp; Debugging</h3>
+                        <p class="font-body-md text-body-md text-on-surface-variant text-sm">Menyelesaikan error, optimasi performa, atau menambahkan fitur baru pada aplikasi Anda.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Workflow Section -->
+        <section class="py-xl bg-surface-container-lowest border-y border-outline-variant/30">
+            <div class="max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop">
+                <div class="text-center mb-lg">
+                    <h2 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-on-surface mb-4">Alur Kerja Praktis &amp; Transparan</h2>
+                    <p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto">Dari diskusi konsep awal hingga produk siap dirilis, proses kami terstruktur dengan rapi demi kepuasan Anda.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
+                    <!-- Step 1 -->
+                    <div class="hero-anim bg-surface border border-outline-variant rounded p-5 relative overflow-hidden group">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-primary-container"></div>
+                        <div class="font-code-sm text-code-sm text-primary mb-2">01 / DISCUSS</div>
+                        <h3 class="font-headline-lg-mobile text-on-surface text-lg mb-2 font-semibold">Konsultasi &amp; Deal</h3>
+                        <p class="font-body-md text-body-md text-on-surface-variant text-sm">Diskusikan kebutuhan tugas, aplikasi, atau website Anda via WhatsApp secara gratis.</p>
+                    </div>
+                    <!-- Step 2 -->
+                    <div class="hero-anim bg-surface border border-outline-variant rounded p-5 relative overflow-hidden group">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-secondary"></div>
+                        <div class="font-code-sm text-code-sm text-secondary mb-2">02 / DEPOSIT</div>
+                        <h3 class="font-headline-lg-mobile text-on-surface text-lg mb-2 font-semibold">Down Payment</h3>
+                        <p class="font-body-md text-body-md text-on-surface-variant text-sm">Pembayaran DP minimal 30% - 50% atau sesuai kesepakatan untuk mengunci slot pengerjaan.</p>
+                    </div>
+                    <!-- Step 3 -->
+                    <div class="hero-anim bg-surface border border-outline-variant rounded p-5 relative overflow-hidden group">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-primary-container"></div>
+                        <div class="font-code-sm text-code-sm text-primary mb-2">03 / CODING</div>
+                        <h3 class="font-headline-lg-mobile text-on-surface text-lg mb-2 font-semibold">Proses Coding</h3>
+                        <p class="font-body-md text-body-md text-on-surface-variant text-sm">Tim engineer kami mulai menulis kode dengan clean code, responsif, dan performa tinggi.</p>
+                    </div>
+                    <!-- Step 4 -->
+                    <div class="hero-anim bg-surface border border-outline-variant rounded p-5 relative overflow-hidden group">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-secondary"></div>
+                        <div class="font-code-sm text-code-sm text-secondary mb-2">04 / REVIEW</div>
+                        <h3 class="font-headline-lg-mobile text-on-surface text-lg mb-2 font-semibold">Demo &amp; Revisi</h3>
+                        <p class="font-body-md text-body-md text-on-surface-variant text-sm">Penayangan demo hasil pengerjaan. Kami memberikan garansi revisi sesuai brief awal.</p>
+                    </div>
+                    <!-- Step 5 -->
+                    <div class="hero-anim bg-surface border border-outline-variant rounded p-5 relative overflow-hidden group">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-primary-container"></div>
+                        <div class="font-code-sm text-code-sm text-primary mb-2">05 / DONE</div>
+                        <h3 class="font-headline-lg-mobile text-on-surface text-lg mb-2 font-semibold">Pelunasan &amp; Serah Terima</h3>
+                        <p class="font-body-md text-body-md text-on-surface-variant text-sm">Setelah semua sesuai deal, lakukan pelunasan. Seluruh source code dikirim lengkap.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="py-xl max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop">
+            <div class="text-center mb-lg">
+                <h2 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-on-surface mb-4">Apa Kata Klien Kami?</h2>
+                <p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto">Lebih dari 150+ proyek sukses diselesaikan dengan tingkat kepuasan tinggi.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Testi 1 -->
+                <div class="hero-anim bg-surface-container-high border border-outline-variant rounded p-6 flex flex-col justify-between group">
+                    <p class="font-body-md text-body-md text-on-surface-variant italic mb-6">
+                        "Joki tugas kuliah di minCODE bener-bener cepet bgt! Codingannya bersih, dikasih penjelasan baris kodenya lagi jadi gampang pas presentasi ke dosen. Mantap!"
+                    </p>
+                    <div class="flex items-center gap-sm">
+                        <div class="w-10 h-10 rounded-full bg-primary-container/20 flex items-center justify-center text-primary font-bold">R</div>
+                        <div>
+                            <h4 class="font-headline-lg-mobile text-on-surface text-md font-semibold">Rian Kurniawan</h4>
+                            <p class="font-code-sm text-code-sm text-on-surface-variant text-xs">Mahasiswa Teknik Informatika</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testi 2 -->
+                <div class="hero-anim bg-surface-container-high border border-outline-variant rounded p-6 flex flex-col justify-between group">
+                    <p class="font-body-md text-body-md text-on-surface-variant italic mb-6">
+                        "Landing page untuk company profile startup saya selesai sebelum deadline. Desainnya modern, responsif di mobile, dan page speed nya kenceng. Pelayanan ramah."
+                    </p>
+                    <div class="flex items-center gap-sm">
+                        <div class="w-10 h-10 rounded-full bg-secondary/20 flex items-center justify-center text-secondary font-bold">A</div>
+                        <div>
+                            <h4 class="font-headline-lg-mobile text-on-surface text-md font-semibold">Amanda Putri</h4>
+                            <p class="font-code-sm text-code-sm text-on-surface-variant text-xs">CEO &amp; Co-Founder TechStartup</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testi 3 -->
+                <div class="hero-anim bg-surface-container-high border border-outline-variant rounded p-6 flex flex-col justify-between group">
+                    <p class="font-body-md text-body-md text-on-surface-variant italic mb-6">
+                        "Kemarin pas ngerjain projek skripsi stuck gara-gara error database. Untung ada jasa debugging minCODE, gak sampai 2 jam bug nya langsung kelar di-fix. Recommended!"
+                    </p>
+                    <div class="flex items-center gap-sm">
+                        <div class="w-10 h-10 rounded-full bg-primary-container/20 flex items-center justify-center text-primary font-bold">D</div>
+                        <div>
+                            <h4 class="font-headline-lg-mobile text-on-surface text-md font-semibold">Dian Saputra</h4>
+                            <p class="font-code-sm text-code-sm text-on-surface-variant text-xs">Mahasiswa Sistem Informasi</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="py-xl px-margin-mobile md:px-margin-desktop max-w-5xl mx-auto">
+            <div class="bg-gradient-to-br from-surface-container-highest to-surface-container-low border border-outline-variant rounded-lg p-8 md:p-12 text-center relative overflow-hidden">
+                <!-- Decorative Elements -->
+                <div class="absolute top-0 right-0 w-64 h-64 bg-primary-container/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+                <h2 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-on-surface mb-4 relative z-10">Siap Memulai Proyek Anda?</h2>
+                <p class="font-body-md text-body-md text-on-surface-variant mb-8 max-w-2xl mx-auto relative z-10">Diskusikan kebutuhan teknis Anda dengan tim kami. Kami siap memberikan solusi arsitektur terbaik untuk ide Anda.</p>
+                <a class="inline-block bg-primary-container text-on-primary-container px-8 py-4 rounded font-label-caps text-label-caps hover:brightness-110 transition-all active:scale-95 shadow-[0_0_15px_rgba(34,211,238,0.3)] relative z-10" href="kontak.html">
+                                    Mulai Konsultasi Gratis
+                                </a>
+            </div>
+        </section>
+    </main>
+    <!-- Footer -->
+    <footer class="bg-surface-container-lowest dark:bg-surface-container-lowest full-width bottom border-t border-outline-variant dark:border-outline-variant flat no shadows">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-md w-full px-margin-mobile md:px-margin-desktop py-lg max-w-7xl mx-auto">
+            <div>
+                <a class="font-headline-lg text-headline-lg font-bold text-primary dark:text-primary mb-4 block" href="index.html">minCODE</a>
+                <p class="font-body-md text-body-md text-on-surface-variant max-w-sm mb-6">Solusi Coding &amp; Development Terpercaya. Membangun fondasi digital yang kuat untuk masa depan.</p>
+                <div class="font-body-md text-body-md text-on-surface-variant text-sm">
+                                    © 2024 minCODE. All rights reserved. Built for technical mastery.
+                                </div>
+            </div>
+            <div class="flex flex-col md:items-end justify-start gap-3">
+                <h4 class="font-label-caps text-label-caps text-on-surface mb-2">Tautan Navigasi</h4>
+                <a class="font-body-md text-body-md text-on-surface-variant dark:text-on-surface-variant hover:text-secondary dark:hover:text-secondary transition-colors hover:underline" href="layanan.html">Services</a>
+                <a class="font-body-md text-body-md text-on-surface-variant dark:text-on-surface-variant hover:text-secondary dark:hover:text-secondary transition-colors hover:underline" href="portofolio.html">Portfolio</a>
+                <a class="font-body-md text-body-md text-on-surface-variant dark:text-on-surface-variant hover:text-secondary dark:hover:text-secondary transition-colors hover:underline" href="#">Privacy Policy</a>
+                <a class="font-body-md text-body-md text-on-surface-variant dark:text-on-surface-variant hover:text-secondary dark:hover:text-secondary transition-colors hover:underline" href="#">Terms of Service</a>
+                <a class="font-body-md text-body-md text-on-surface-variant dark:text-on-surface-variant hover:text-secondary dark:hover:text-secondary transition-colors hover:underline" href="kontak.html">Contact</a>
+            </div>
+        </div>
+    </footer>
+    <script>
+        // Mobile menu toggle logic
+        const menuToggle = document.getElementById('mobile-menu-toggle');
+        const dropdown = document.getElementById('mobile-dropdown');
+        if (menuToggle && dropdown) {
+            menuToggle.addEventListener('click', () => {
+                dropdown.classList.toggle('hidden');
+            });
+        }
+
+        // GSAP Animations
+        document.addEventListener("DOMContentLoaded", (event) => {
+            gsap.to(".hero-anim", {
+                autoAlpha: 1,
+                y: 0,
+                duration: 1,
+                stagger: 0.15,
+                ease: "power3.out",
+                delay: 0.1
+            });
+        });
+
+        // Three.js Interactive Background
+        const canvas = document.getElementById('hero-canvas');
+        if (canvas) {
+            const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+            
+            const container = canvas.parentElement;
+            renderer.setSize(container.clientWidth, container.clientHeight);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
+            camera.position.z = 150;
+
+            const particleCount = 250;
+            const particles = new THREE.BufferGeometry();
+            const particlePositions = new Float32Array(particleCount * 3);
+            const particleVelocities = [];
+
+            for (let i = 0; i < particleCount; i++) {
+                particlePositions[i * 3] = (Math.random() - 0.5) * 400;
+                particlePositions[i * 3 + 1] = (Math.random() - 0.5) * 400;
+                particlePositions[i * 3 + 2] = (Math.random() - 0.5) * 400;
+                
+                particleVelocities.push({
+                    x: (Math.random() - 0.5) * 0.5,
+                    y: (Math.random() - 0.5) * 0.5,
+                    z: (Math.random() - 0.5) * 0.5
+                });
+            }
+
+            particles.setAttribute('position', new THREE.BufferAttribute(particlePositions, 3));
+
+            const particleMaterial = new THREE.PointsMaterial({
+                color: 0x22d3ee,
+                size: 2,
+                transparent: true,
+                opacity: 0.8
+            });
+
+            const particleSystem = new THREE.Points(particles, particleMaterial);
+            scene.add(particleSystem);
+
+            const lineMaterial = new THREE.LineBasicMaterial({
+                color: 0x22d3ee,
+                transparent: true,
+                opacity: 0.15
+            });
+
+            const linesGeometry = new THREE.BufferGeometry();
+            const lineSystem = new THREE.LineSegments(linesGeometry, lineMaterial);
+            scene.add(lineSystem);
+
+            let mouseX = 0;
+            let mouseY = 0;
+            let targetX = 0;
+            let targetY = 0;
+            let windowHalfX = window.innerWidth / 2;
+            let windowHalfY = window.innerHeight / 2;
+
+            document.addEventListener('mousemove', (event) => {
+                mouseX = (event.clientX - windowHalfX) * 0.05;
+                mouseY = (event.clientY - windowHalfY) * 0.05;
+            });
+
+            window.addEventListener('resize', () => {
+                windowHalfX = window.innerWidth / 2;
+                windowHalfY = window.innerHeight / 2;
+                camera.aspect = container.clientWidth / container.clientHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(container.clientWidth, container.clientHeight);
+            });
+
+            function animate() {
+                requestAnimationFrame(animate);
+                
+                targetX = mouseX * 0.5;
+                targetY = mouseY * 0.5;
+                
+                camera.position.x += (targetX - camera.position.x) * 0.02;
+                camera.position.y += (-targetY - camera.position.y) * 0.02;
+                camera.lookAt(scene.position);
+                
+                const positions = particleSystem.geometry.attributes.position.array;
+                
+                for (let i = 0; i < particleCount; i++) {
+                    positions[i * 3] += particleVelocities[i].x;
+                    positions[i * 3 + 1] += particleVelocities[i].y;
+                    positions[i * 3 + 2] += particleVelocities[i].z;
+                    
+                    if (Math.abs(positions[i * 3]) > 200) particleVelocities[i].x *= -1;
+                    if (Math.abs(positions[i * 3 + 1]) > 200) particleVelocities[i].y *= -1;
+                    if (Math.abs(positions[i * 3 + 2]) > 200) particleVelocities[i].z *= -1;
+                }
+                particleSystem.geometry.attributes.position.needsUpdate = true;
+                
+                // Connect particles
+                const linePositions = [];
+                for (let i = 0; i < particleCount; i++) {
+                    for (let j = i + 1; j < particleCount; j++) {
+                        const dx = positions[i * 3] - positions[j * 3];
+                        const dy = positions[i * 3 + 1] - positions[j * 3 + 1];
+                        const dz = positions[i * 3 + 2] - positions[j * 3 + 2];
+                        const dist = Math.sqrt(dx * dx + dy * dy + dz * dz);
+                        
+                        if (dist < 40) {
+                            linePositions.push(
+                                positions[i * 3], positions[i * 3 + 1], positions[i * 3 + 2],
+                                positions[j * 3], positions[j * 3 + 1], positions[j * 3 + 2]
+                            );
+                        }
+                    }
+                }
+                
+                linesGeometry.setAttribute('position', new THREE.Float32BufferAttribute(linePositions, 3));
+                
+                renderer.render(scene, camera);
+            }
+
+            animate();
+        }
+    </script>
+</body>
+</html>
