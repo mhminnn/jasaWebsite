@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mincode.vercel.app/sitemap.xml
+Sitemap: https://www.minnncode.biz.id/sitemap.xml
